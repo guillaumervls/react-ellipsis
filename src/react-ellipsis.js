@@ -9,7 +9,7 @@ module.exports = function (React) {
   React.addons.Ellipsis = React.createClass({
     getDefaultProps: function () {
       return {
-        element: React.DOM.div
+        component: React.DOM.div
       };
     },
     truncateText: function (domElement) {
@@ -27,7 +27,7 @@ module.exports = function (React) {
       this.truncateText(domElement);
     },
     render: function () {
-      return this.transferPropsTo(this.props.element(null, this.props.children));
+      return this.transferPropsTo(this.props.component(null, this.props.children));
     }
   });
   return React.addons.Ellipsis;

@@ -35,7 +35,7 @@ In this case, it will depend on `react`.
 # Use in JSX
 
 ```html
-<Ellipsis element={React.DOM.div}> <!-- element defaults to <div> -->
+<Ellipsis component={React.DOM.div}> <!-- component defaults to <div> -->
   text
 </Ellipsis>
 ```
