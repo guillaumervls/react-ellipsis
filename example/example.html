@@ -1,0 +1,21 @@
+<html>
+<head>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/react/0.5.1/react.js"></script>
+  <script src="../dist/react-ellipsis.min.js"></script>
+  <style>
+    .testElement {
+      display: block;
+      background-color: #ff0;
+      font-size: 36px;
+      line-height: 40px;
+      height: 80px;
+      width: 400px;
+    }
+  </style>
+</head>
+<body>
+</body>
+<script>
+  React.renderComponent(React.addons.Ellipsis({className: 'testElement', style:{color:'red'}, element:React.DOM.a, href:'#'}, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec ullamcorper nisl. Nam vel euismod lorem.'), document.body);
+</script>
+</html>
