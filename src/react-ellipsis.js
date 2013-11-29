@@ -13,10 +13,15 @@ module.exports = function (React) {
       };
     },
     truncateText: function (domElement) {
+      var setTitleOnce = function () {
+        domElement.title = domElement[textProperty];
+        setTitleOnce = function () {};
+      };
       while (domElement.scrollHeight - domElement.clientHeight >= 1) {
         if (domElement[textProperty] === '...') {
           break;
         }
+        setTitleOnce();
         domElement[textProperty] = domElement[textProperty].replace(/.(\.\.\.)?$/, '...');
       }
     },
