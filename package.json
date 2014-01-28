@@ -1,6 +1,6 @@
 {
   "name": "react-ellipsis",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "React ellipsis component",
   "main": "src/react-ellipsis.js",
   "scripts": {

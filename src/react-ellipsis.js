@@ -17,7 +17,7 @@ module.exports = function (React) {
         domElement.title = domElement[textProperty];
         setTitleOnce = function () {};
       };
-      while (domElement.scrollHeight - domElement.clientHeight >= 1) {
+      while (domElement.scrollHeight - (domElement.clientHeight || domElement.offsetHeight) >= 1) {
         if (domElement[textProperty] === '...') {
           break;
         }
