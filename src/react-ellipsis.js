@@ -25,14 +25,19 @@ module.exports = function (React) {
         domElement[textProperty] = domElement[textProperty].replace(/.(\.\.\.)?$/, '...');
       }
     },
-    componentDidMount: function (domElement) {
+    componentDidMount: function () {
+      var domElement = React.findDOMNode(this);
       this.truncateText(domElement);
     },
-    componentDidUpdate: function (p, s, domElement) {
+    componentDidUpdate: function () {
+      var domElement = React.findDOMNode(this);
       this.truncateText(domElement);
     },
     render: function () {
-      return this.transferPropsTo(this.props.component(null, this.props.children));
+      return this.props.component(
+        this.props,
+        this.props.children
+      );
     }
   });
   return React.addons.Ellipsis;
