@@ -1,5 +1,5 @@
-React Infinite Scroll
-=====================
+React Ellipsis
+==============
 
 *[React](http://facebook.github.io/react) ellipsis component*
 
