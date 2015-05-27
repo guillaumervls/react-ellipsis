@@ -1,6 +1,6 @@
 {
   "name": "react-ellipsis",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "React ellipsis component",
   "main": "src/react-ellipsis.js",
   "scripts": {
@@ -11,11 +11,13 @@
     "url": "git://github.com/guillaumervls/react-ellipsis.git"
   },
   "keywords": [
-    "infinite",
-    "scroll",
+    "ellipsis",
     "react"
   ],
   "author": "guillaumervls",
+  "contributors": [
+    "avik-das"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/guillaumervls/react-ellipsis/issues"
