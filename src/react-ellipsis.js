@@ -22,7 +22,7 @@ module.exports = function (React) {
           break;
         }
         setTitleOnce();
-        domElement[textProperty] = domElement[textProperty].replace(/.(\.\.\.)?$/, '...');
+        domElement[textProperty] = domElement[textProperty].replace(/(.|\s)(\.\.\.)?$/, '...');
       }
     },
     componentDidMount: function () {
