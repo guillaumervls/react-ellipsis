@@ -49,6 +49,20 @@ npm install
 grunt dist
 ```
 
+## Run tests
+
+```
+npm install
+grunt test
+
+# or automatically re-run during development
+grunt watch
+
+# or run in the browser
+grunt browserify:test
+# now open test/react-ellipsis.test.html in your browser
+```
+
 ### Licence
 
 **The MIT License (MIT)**
