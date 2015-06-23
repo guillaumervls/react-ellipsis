@@ -1,5 +1,26 @@
+// IE shim
+var textProperty = document.createElement('div').textContent !== undefined ?
+  'textContent' :
+  'innerText';
+
+function isOverflowing (domElement) {
+  var visibleHeight = domElement.clientHeight || domElement.offsetHeight;
+  return domElement.scrollHeight - visibleHeight >= 1;
+}
+
 module.exports = function truncate (domElement) {
-  // TODO: this will perform the truncation
-  // For now, return a bogus value so the test harness can be verified.
+  if (!domElement) {
+    return;
+  }
+
+  if (isOverflowing(domElement)) {
+    domElement.title = domElement[textProperty];
+  }
+
+  while (isOverflowing(domElement)) {
+    domElement[textProperty] =
+      domElement[textProperty].replace(/(.|\s)(\.\.\.)?$/, '...');
+  }
+
   return domElement;
 };
