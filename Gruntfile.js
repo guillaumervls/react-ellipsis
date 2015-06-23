@@ -90,6 +90,12 @@ module.exports = function (grunt) {
           }
         }
       }
+    },
+    watch: {
+      test: {
+        files: ['src/**/*.js', 'test/spec/*.test.js', 'test/*.test.html'],
+        tasks: ['test']
+      }
     }
   });
 
@@ -97,6 +103,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-mocha');
 
   grunt.registerTask('lint', ['jshint']);
