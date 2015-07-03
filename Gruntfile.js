@@ -5,7 +5,12 @@ module.exports = function (grunt) {
       dist: {
         files: {
           'dist/react-ellipsis.js': ['src/umd.js']
-        },
+        }
+      },
+      test: {
+        files: {
+          'test/dist/specs.js': ['test/spec/*.test.js']
+        }
       }
     },
     uglify: {
@@ -18,13 +23,15 @@ module.exports = function (grunt) {
         }
       }
     },
-    clean: ['dist/react-ellipsis.js'],
-    mochaTest: {
-      all: {
+    clean: ['dist/react-ellipsis.js', 'test/dist'],
+    mocha: {
+      test: {
+        src: ['test/**/*.html'],
         options: {
-          reporter: 'spec'
-        },
-        src: ['test/**/*.js', '!test/mock/**']
+          reporter: 'Spec',
+          run: true,
+          log: true
+        }
       }
     },
     jshint: {
@@ -70,7 +77,7 @@ module.exports = function (grunt) {
       },
       test: {
         files: {
-          src: ['test/**/*.js']
+          src: ['test/spec/*.js']
         },
         options: {
           globals: {
@@ -83,6 +90,12 @@ module.exports = function (grunt) {
           }
         }
       }
+    },
+    watch: {
+      test: {
+        files: ['src/**/*.js', 'test/spec/*.test.js', 'test/*.test.html'],
+        tasks: ['test']
+      }
     }
   });
 
@@ -90,8 +103,11 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-mocha');
 
   grunt.registerTask('lint', ['jshint']);
-  grunt.registerTask('dist', ['browserify', 'uglify', 'clean']);
+  grunt.registerTask('dist', ['browserify:dist', 'uglify', 'clean']);
+  grunt.registerTask('test', ['lint', 'browserify:test', 'mocha']);
   grunt.registerTask('default', ['jshint', 'dist']);
 };

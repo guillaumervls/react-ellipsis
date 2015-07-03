@@ -1,5 +1,4 @@
-// IE shim
-var textProperty = (document.createElement('div').textContent !== undefined) ? 'textContent' : 'innerText';
+var truncate = require('./truncate');
 
 module.exports = function (React) {
   if (React.addons && React.addons.Ellipsis) {
@@ -12,27 +11,19 @@ module.exports = function (React) {
         component: React.DOM.div
       };
     },
-    truncateText: function (domElement) {
-      var setTitleOnce = function () {
-        domElement.title = domElement[textProperty];
-        setTitleOnce = function () {};
-      };
-      while (domElement.scrollHeight - (domElement.clientHeight || domElement.offsetHeight) >= 1) {
-        if (domElement[textProperty] === '...') {
-          break;
-        }
-        setTitleOnce();
-        domElement[textProperty] = domElement[textProperty].replace(/.(\.\.\.)?$/, '...');
-      }
+    componentDidMount: function () {
+      var domElement = React.findDOMNode(this);
+      truncate(domElement);
     },
-    componentDidMount: function (domElement) {
-      this.truncateText(domElement);
-    },
-    componentDidUpdate: function (p, s, domElement) {
-      this.truncateText(domElement);
+    componentDidUpdate: function () {
+      var domElement = React.findDOMNode(this);
+      truncate(domElement);
     },
     render: function () {
-      return this.transferPropsTo(this.props.component(null, this.props.children));
+      return this.props.component(
+        this.props,
+        this.props.children
+      );
     }
   });
   return React.addons.Ellipsis;

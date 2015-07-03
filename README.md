@@ -1,5 +1,5 @@
-React Infinite Scroll
-=====================
+React Ellipsis
+==============
 
 *[React](http://facebook.github.io/react) ellipsis component*
 
@@ -47,6 +47,20 @@ Note that it is your responsiblity to size and style the `<Ellipsis>` component.
 ```
 npm install
 grunt dist
+```
+
+## Run tests
+
+```
+npm install
+grunt test
+
+# or automatically re-run during development
+grunt watch
+
+# or run in the browser
+grunt browserify:test
+# now open test/react-ellipsis.test.html in your browser
 ```
 
 ### Licence
